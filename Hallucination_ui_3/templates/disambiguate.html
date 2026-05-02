@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Meaning</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.box{
+    background:#111827;
+    width:500px;
+    max-width:90%;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+    background:#1f2937;
+    padding:14px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.option:hover{
+    background:#374151;
+}
+
+.option input{
+    margin-right:12px;
+    transform:scale(1.2);
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.error{
+    color:#f87171;
+    text-align:center;
+    margin-top:10px;
+}
+</style>
+
+<script>
+function validateForm(){
+    let selected = document.querySelector('input[name="topic_choice"]:checked');
+
+    if(!selected){
+        document.getElementById("error").innerHTML =
+        "Please select one meaning before continuing.";
+        return false;
+    }
+    return true;
+}
+</script>
+
+</head>
+<body>
+
+<div class="box">
+
+<h2>Ambiguous Topic Detected</h2>
+
+<p>
+You entered <b>{{ topic }}</b><br>
+Please choose what you mean:
+</p>
+
+<form action="/analyze" method="POST" onsubmit="return validateForm()">
+
+<input type="hidden" name="query" value="{{ query }}">
+<input type="hidden" name="llm_output" value="{{ llm_output }}">
+<input type="hidden" name="resolved" value="yes">
+
+<div class="options">
+{% for item in options %}
+<label class="option">
+<input type="radio" name="topic_choice" value="{{ item.value }}">
+{{ item.label }}
+</label>
+{% endfor %}
+</div>
+
+<button type="submit">Continue Prediction</button>
+
+<div id="error" class="error"></div>
+
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,338 @@
+/* ==========================================================
+   HALLUCINATION DETECTION SYSTEM — style.css
+   ========================================================== */
+
+/* ---------- GLOBAL ---------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#070b16;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* ---------- BACKGROUND GLOW ---------- */
+.bg-blur{
+    position:fixed;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+    opacity:.28;
+}
+
+.bg-blur.one{
+    top:-100px;
+    left:-100px;
+    background:#5b6eff;
+}
+
+.bg-blur.two{
+    bottom:-100px;
+    right:-100px;
+    background:#00c8ff;
+}
+
+/* ---------- BUTTONS ---------- */
+.primary-btn,
+.secondary-btn{
+    padding:14px 26px;
+    border-radius:12px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.25s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    border:none;
+    position:relative;
+    overflow:hidden;
+}
+
+.primary-btn{
+    background:linear-gradient(135deg,#5b6eff,#7d8cff);
+    color:#fff;
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(91,110,255,.30);
+}
+
+.secondary-btn{
+    color:#fff;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.secondary-btn:hover{
+    border-color:#5b6eff;
+}
+
+.full-btn{
+    width:100%;
+}
+
+/* Ripple */
+.ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    transform:scale(0);
+    animation:ripple-anim .6s linear;
+    pointer-events:none;
+}
+@keyframes ripple-anim{to{transform:scale(4);opacity:0}}
+
+/* ---------- BADGE ---------- */
+.mini-badge{
+    display:inline-block;
+    font-size:12px;
+    padding:8px 14px;
+    border-radius:30px;
+    background:rgba(91,110,255,.12);
+    color:#9baaff;
+    margin-bottom:10px;
+}
+
+/* ---------- HOME ---------- */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+}
+
+.hero-card{
+    width:100%;
+    max-width:760px;
+    text-align:center;
+    padding:55px;
+    border-radius:26px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(14px);
+}
+
+.hero-card h1{
+    font-size:56px;
+    margin-bottom:14px;
+}
+
+.hero-card h1 span{
+    color:#5b6eff;
+}
+
+.hero-card p{
+    color:#c9d1ff;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+.hero-btns{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+/* ---------- INFO SECTION (home about) ---------- */
+.info-section{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    max-width:1100px;
+    margin:0 auto 60px;
+    padding:0 20px;
+}
+
+.info-box{
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.07);
+    backdrop-filter:blur(10px);
+}
+
+.info-box h2{
+    font-size:20px;
+    margin-bottom:10px;
+    color:#9baaff;
+}
+
+.info-box p{
+    color:#b0badc;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* ---------- DASHBOARD ---------- */
+.dashboard-wrap,
+.result-wrap{
+    padding:55px 20px;
+    display:flex;
+    justify-content:center;
+}
+
+.form-card,
+.result-card{
+    width:100%;
+    max-width:1100px;
+    padding:42px;
+    border-radius:24px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(14px);
+}
+
+.form-card h1,
+.result-card h1{
+    font-size:40px;
+    margin-bottom:8px;
+}
+
+.subtext{
+    color:#bfc8ef;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+/* ---------- FORM ---------- */
+label{
+    display:block;
+    margin:18px 0 8px;
+    font-weight:500;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:15px;
+    border-radius:14px;
+    border:1px solid transparent;
+    background:#11172a;
+    color:#fff;
+    outline:none;
+    font-size:15px;
+    transition:border-color .2s;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#5b6eff;
+}
+
+/* ---------- LOADER OVERLAY ---------- */
+.loader-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(6,8,16,.92);
+    backdrop-filter:blur(8px);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:20px;
+}
+
+.loader-box{
+    text-align:center;
+    padding:48px 40px;
+    background:#0c1022;
+    border:1px solid rgba(91,110,245,.2);
+    border-radius:24px;
+    max-width:420px;
+}
+
+.loader-box h3{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:10px;
+    color:#e8ecff;
+}
+
+.loader-box p{
+    color:#6b7599;
+    font-size:13px;
+    font-family:'JetBrains Mono',monospace;
+    line-height:1.7;
+}
+
+/* spinner */
+.spinner{
+    width:60px;
+    height:60px;
+    margin:0 auto 24px;
+    position:relative;
+}
+
+.spinner::before,
+.spinner::after,
+.spinner div{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:2.5px solid transparent;
+}
+
+.spinner::before{ border-top-color:#5b6ef5; animation:spin 1.2s linear infinite; }
+.spinner::after { inset:8px; border-right-color:#00e5c3; animation:spin .9s linear infinite reverse; }
+
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* ---------- TABLE ---------- */
+.result-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.result-table th,
+.result-table td{
+    border:1px solid rgba(255,255,255,.08);
+    padding:14px;
+}
+
+.result-table th{
+    background:#151d34;
+}
+
+/* ---------- FOOTER (site-wide) ---------- */
+footer{
+    text-align:center;
+    padding:28px 20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:#4a5270;
+    letter-spacing:1.5px;
+    border-top:1px solid rgba(255,255,255,.05);
+    margin-top:40px;
+}
+
+footer span{
+    color:#5b6eff;
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:992px){
+    .info-section{ grid-template-columns:1fr; }
+}
+
+@media(max-width:768px){
+    .hero-card h1{ font-size:38px; }
+    .form-card,.result-card{ padding:24px; }
+    .primary-btn,.secondary-btn{ width:100%; }
+}

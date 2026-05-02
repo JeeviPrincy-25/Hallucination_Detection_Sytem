@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Hallucination Detector</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+</head>
+<body>
+
+<div class="bg-blur one"></div>
+<div class="bg-blur two"></div>
+
+<section class="dashboard-wrap">
+
+    <div class="form-card">
+
+        <span class="mini-badge">Analysis Workspace</span>
+
+        <h1>Run Detection</h1>
+
+        <p class="subtext">
+            Paste AI-generated output and verify factual accuracy.
+        </p>
+
+        <form action="/analyze" method="POST" id="analyzeForm">
+
+            <label>Topic Name</label>
+            <input 
+                type="text"
+                name="topic"
+                placeholder="Example: Albert Einstein"
+                required
+            >
+
+            <label>Query / Question</label>
+            <input
+                type="text"
+                name="query"
+                placeholder="Example: What was Einstein famous for?"
+                required
+            >
+
+            <label>LLM Generated Output</label>
+            <textarea
+                name="llm_output"
+                rows="8"
+                placeholder="Paste ChatGPT / Gemini / Groq response here..."
+                required
+            ></textarea>
+
+            <button type="submit" class="primary-btn full-btn" id="submitBtn">
+                Analyze Now
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- Loader -->
+<div class="loader-overlay" id="loader">
+
+    <div class="loader-box">
+
+        <div class="spinner"></div>
+
+        <h3>Analyzing Content...</h3>
+
+        <p>
+            Fetching trusted data • Comparing semantics • Predicting result
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
